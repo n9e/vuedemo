@@ -67,13 +67,8 @@ module.exports = {
   },
 
   chainWebpack (config) {
-    const cdn = {
-      // why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
-      js: []
-    }
     config.plugin('html')
       .tap(args => {
-        args[0].cdn = cdn
         args[0].meta = {
           manifest: manifestName
         }
