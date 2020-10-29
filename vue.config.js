@@ -91,5 +91,6 @@ module.exports = {
       .when(process.env.NODE_ENV === 'development',
         config => config.devtool('cheap-source-map')
       )
+    //config.optimization.delete('splitChunks'); //由于微前端架构要求只有一个入口的js和css，所以如果是有的话需要进行关闭，打开注释；关闭代码分离，只生成一个js文件和css文件
   }
 }
