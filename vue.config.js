@@ -35,6 +35,9 @@ module.exports = {
       'Access-Control-Allow-Origin': '*'
     }
   },
+  css: {
+    extract: false, // 把css动态注入到js中
+  },
   configureWebpack: {
     devtool: 'none',
     name: name,
@@ -46,12 +49,13 @@ module.exports = {
     },
     output: {
       library: `${pkgJson.systemName}`,
-      libraryTarget: 'amd'
+      libraryTarget: 'amd',
+      filename: `${pkgJson.systemName}.[chunkhash].js`
     },
     plugins: [
       // new VueLoaderPlugin(),
       new MiniCssExtractPlugin({
-        filename: '[name]-[chunkhash].css',
+        filename: `${pkgJson.systemName}-[chunkhash].css`,
         chunkFilename: '[name]-[chunkhash].css'
       }),
       new StatsPlugin(manifestName, {
